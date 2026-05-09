@@ -46,7 +46,6 @@ export default function Navbar() {
                 <span className="text-saffron">our</span>
                 <span className="text-white">young</span>
                 <span className="text-india-green" style={{ textShadow: "0 0 8px rgba(45, 184, 30, 0.6)" }}>india</span>
-                <span className="text-saffron">.in</span>
               </span>
               <span className="font-cormorant italic text-[11px] text-gold tracking-wider">Pure Passion. Incredible Journeys.</span>
             </div>
