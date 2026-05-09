@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import api from "../lib/api";
 import StoryCard from "../components/StoryCard";
 import StatsSection from "../components/StatsSection";
-import { ChevronLeft, ChevronRight, Sparkles, Star, Mic, ArrowRight, Instagram, Youtube } from "lucide-react";
+import { ChevronLeft, ChevronRight, Sparkles, Star, Mic, ArrowRight, Instagram, Youtube, Facebook } from "lucide-react";
 
 const HERO_IMAGE = "https://customer-assets.emergentagent.com/job_stories-live-preview/artifacts/lbmx61u2_file_000000002f207207ad65e9d8d87e293b.png";
 const LOGO_FULL = "https://customer-assets.emergentagent.com/job_7e34814e-aac7-419b-9cb6-23c99755e0df/artifacts/b3mlbrqx_file_000000002f207207ad65e9d8d87e293b.png";
@@ -246,10 +246,10 @@ export default function Home() {
               <h3 className="font-cinzel font-bold text-xl text-white">YouTube</h3>
               <p className="font-mont text-sm text-white/90 mt-1">Full interviews & journey videos</p>
             </a>
-            <a href="#" data-testid="social-card-whatsapp" className="hover-lift bg-gradient-to-br from-india-green to-emerald-400 text-white rounded-2xl p-8 shadow-lg">
-              <span className="text-white mx-auto mb-3 block text-4xl">💬</span>
-              <h3 className="font-cinzel font-bold text-xl text-white">WhatsApp</h3>
-              <p className="font-mont text-sm text-white/90 mt-1">Share with friends & family</p>
+            <a href="#" data-testid="social-card-facebook" className="hover-lift bg-gradient-to-br from-[#1877F2] via-[#1064D8] to-[#0a4faf] text-white rounded-2xl p-8 shadow-lg">
+              <Facebook className="text-white mx-auto mb-3" size={36}/>
+              <h3 className="font-cinzel font-bold text-xl text-white">Facebook</h3>
+              <p className="font-mont text-sm text-white/90 mt-1">Join the community & updates</p>
             </a>
           </div>
         </div>
