@@ -21,7 +21,7 @@ const FAQS = [
   { q: "Can I nominate myself?", a: "Absolutely! We encourage self-nominations. If you've achieved something you're proud of, we want to hear about it." },
   { q: "What if my nominee is shy or nervous?", a: "Sharanya is great at making kids feel comfortable! The interview is conversational, friendly, and fun — not formal or intimidating." },
   { q: "How long until we hear back?", a: "We review all nominations within 7 days. If selected, we'll reach out via email. Due to volume, we may not be able to respond to every nomination, but every one is read and considered." },
-  { q: "Can we do the interview in regional languages?", a: "Currently, interviews are conducted in English or Hindi. We're working on adding more languages soon!" },
+  { q: "Can we do the interview in regional languages?", a: "Currently, interviews are conducted in English, Hindi, or Telugu. We're working on adding more languages soon!" },
 ];
 
 const initialForm = {
