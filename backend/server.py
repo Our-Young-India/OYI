@@ -317,6 +317,26 @@ async def root():
     return {"message": "Our Young India API", "version": "1.0"}
 
 
+@api_router.get("/health")
+async def health_check():
+    """Health check endpoint for deployment monitoring"""
+    try:
+        # Test database connection
+        await db.admin.command('ping')
+        return {
+            "status": "healthy",
+            "database": "connected",
+            "timestamp": datetime.now(timezone.utc).isoformat()
+        }
+    except Exception as e:
+        return {
+            "status": "unhealthy",
+            "database": "disconnected",
+            "error": str(e),
+            "timestamp": datetime.now(timezone.utc).isoformat()
+        }
+
+
 # ---------- Stories ----------
 
 @api_router.get("/stories")
