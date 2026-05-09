@@ -9,6 +9,7 @@ import re
 import jwt
 import bcrypt
 import requests
+import certifi
 from pathlib import Path
 from pydantic import BaseModel, Field, ConfigDict, EmailStr
 from typing import List, Optional
@@ -19,9 +20,16 @@ ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
 # MongoDB connection
-mongo_url = os.environ['MONGO_URL']
-client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ['DB_NAME']]
+mongo_url = os.environ['mongodb+srv://oyi_admin: g4smbDjj9DEMRmSA@cluster0.l5bwr5i.mongodb.net/ouryoungindia?retryWrites=oyi_admin&w= g4smbDjj9DEMRmSA
+']
+client = AsyncIOMotorClient(
+    mongo_url,
+    tls=True,
+    tlsCAFile=certifi.where(),
+    serverSelectionTimeoutMS=5000,
+    connectTimeoutMS=5000
+)
+db = client[os.environ['ouryoungindia']]
 
 # Constants
 JWT_SECRET = os.environ.get('JWT_SECRET', 'oyi-super-secret-change-in-prod')
