@@ -1,11 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import api from "../lib/api";
 import { toast } from "sonner";
-import { LogOut, Plus, Edit, Trash2, X, Inbox, Film } from "lucide-react";
+import { LogOut, Plus, Edit, Trash2, X, Inbox, Film, Eye } from "lucide-react";
 import NominationsPanel from "./NominationsPanel";
 
 const FIELDS = ["Academics", "Sports", "Arts", "Technology", "Social Impact", "Entertainment", "Science", "Literature"];
+
+const FIELD_META = {
+  All: { icon: "🌐", color: "bg-gradient-to-br from-gray-700 to-gray-900" },
+  Academics: { icon: "📚", color: "bg-gradient-to-br from-blue-500 to-indigo-600" },
+  Sports: { icon: "⚽", color: "bg-gradient-to-br from-green-500 to-emerald-600" },
+  Arts: { icon: "🎨", color: "bg-gradient-to-br from-pink-500 to-rose-600" },
+  Technology: { icon: "💻", color: "bg-gradient-to-br from-cyan-500 to-blue-600" },
+  "Social Impact": { icon: "🌍", color: "bg-gradient-to-br from-emerald-500 to-teal-600" },
+  Entertainment: { icon: "🎭", color: "bg-gradient-to-br from-purple-500 to-fuchsia-600" },
+  Science: { icon: "🔬", color: "bg-gradient-to-br from-orange-500 to-red-600" },
+  Literature: { icon: "✍️", color: "bg-gradient-to-br from-amber-500 to-yellow-600" },
+};
 
 const emptyStory = {
   name: "", age: 10, field: "Academics",
@@ -23,7 +35,26 @@ export default function Admin() {
   const [editing, setEditing] = useState(null); // story object or null
   const [creating, setCreating] = useState(false);
   const [form, setForm] = useState(emptyStory);
+  const [fieldFilter, setFieldFilter] = useState("All");
   const navigate = useNavigate();
+
+  // Counts per field
+  const fieldCounts = useMemo(() => {
+    const counts = { All: stories.length };
+    for (const f of FIELDS) counts[f] = 0;
+    let totalViews = 0;
+    for (const s of stories) {
+      counts[s.field] = (counts[s.field] || 0) + 1;
+      totalViews += (s.views || 0);
+    }
+    counts.__totalViews = totalViews;
+    return counts;
+  }, [stories]);
+
+  const filteredStories = useMemo(() => {
+    if (fieldFilter === "All") return stories;
+    return stories.filter(s => s.field === fieldFilter);
+  }, [stories, fieldFilter]);
 
   useEffect(() => {
     if (!localStorage.getItem("oyi_admin_token")) {
@@ -62,23 +93,23 @@ export default function Admin() {
       };
       if (creating) {
         await api.post("/stories", payload);
-        toast.success("Story created");
+        toast.success("Journey created");
         // If this story came from a nomination, auto-mark nomination as published
         if (__nominationId) {
           try {
             await api.put(`/nominations/${__nominationId}`, {
               status: "published",
-              note: `Published as story: ${payload.name}`,
+              note: `Published as journey: ${payload.name}`,
             });
             toast.success("Nomination marked as Published");
             await loadNominations();
           } catch {
-            toast.error("Story saved, but failed to update nomination status");
+            toast.error("Journey saved, but failed to update nomination status");
           }
         }
       } else if (editing) {
         await api.put(`/stories/${editing.id}`, payload);
-        toast.success("Story updated");
+        toast.success("Journey updated");
       }
       await loadStories();
       closeEditor();
@@ -88,10 +119,10 @@ export default function Admin() {
   };
 
   const remove = async (s) => {
-    if (!window.confirm(`Delete "${s.name}"?`)) return;
+    if (!window.confirm(`Delete journey "${s.name}"?`)) return;
     try {
       await api.delete(`/stories/${s.id}`);
-      toast.success("Deleted");
+      toast.success("Journey deleted");
       loadStories();
     } catch (err) {
       toast.error(err.response?.data?.detail || "Delete failed");
@@ -132,13 +163,49 @@ export default function Admin() {
 
         {tab === "stories" && (
           <>
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="font-cinzel text-2xl font-bold">Stories</h2>
+            <div className="flex justify-between items-center mb-6 flex-wrap gap-4">
+              <div>
+                <h2 className="font-cinzel text-2xl font-bold">Journeys</h2>
+                <p className="font-mont text-sm text-gray-500">
+                  {filteredStories.length} {filteredStories.length === 1 ? "journey" : "journeys"}
+                  {fieldFilter !== "All" && <span> in <strong className="text-saffron">{fieldFilter}</strong></span>}
+                  <span className="mx-2">·</span>
+                  <Eye size={12} className="inline -mt-0.5"/> {fieldCounts.__totalViews?.toLocaleString() || 0} total views
+                </p>
+              </div>
               <button data-testid="admin-add-story" onClick={startCreate} className="btn-saffron flex items-center gap-2">
-                <Plus size={16}/> Add Story
+                <Plus size={16}/> Add Journey
               </button>
             </div>
-            <div className="bg-white rounded-2xl border border-black/5 overflow-hidden">
+
+            {/* Field filter tabs with counts */}
+            <div className="mb-6 grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-2">
+              {["All", ...FIELDS].map((f) => {
+                const meta = FIELD_META[f];
+                const count = fieldCounts[f] ?? 0;
+                const active = fieldFilter === f;
+                return (
+                  <button
+                    key={f}
+                    data-testid={`field-tab-${f.toLowerCase().replace(/\s+/g, '-')}`}
+                    onClick={() => setFieldFilter(f)}
+                    className={`relative rounded-xl px-3 py-3 text-left transition-all overflow-hidden ${active ? `${meta.color} text-white shadow-lg scale-[1.02]` : "bg-white text-gray-700 border-2 border-black/5 hover:border-saffron/40"}`}
+                  >
+                    <div className="flex items-center gap-2">
+                      <span className="text-xl">{meta.icon}</span>
+                      <div className="flex-1 min-w-0">
+                        <p className={`font-cinzel font-bold text-xs uppercase tracking-wider truncate ${active ? "text-white" : "text-[#1a1a1a]"}`}>{f}</p>
+                        <p className={`font-mont text-[11px] ${active ? "text-white/85" : "text-gray-500"}`}>
+                          {count} {count === 1 ? "journey" : "journeys"}
+                        </p>
+                      </div>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="bg-white rounded-2xl border border-black/5 overflow-hidden shadow-sm">
               <table className="w-full">
                 <thead className="bg-[#F5F5F5] text-xs font-mont uppercase tracking-wider text-gray-600">
                   <tr>
@@ -150,14 +217,14 @@ export default function Admin() {
                   </tr>
                 </thead>
                 <tbody className="font-mont text-sm">
-                  {stories.map(s => (
+                  {filteredStories.map(s => (
                     <tr key={s.id} className="border-t border-black/5 hover:bg-[#FAF7F2]">
                       <td className="p-4">
                         <p className="font-semibold text-[#1a1a1a]">{s.name}</p>
-                        <p className="text-xs text-gray-500">{s.age} · {s.achievement.slice(0, 60)}{s.achievement.length > 60 ? "…" : ""}</p>
+                        <p className="text-xs text-gray-500">{s.age} yrs · {s.achievement.slice(0, 60)}{s.achievement.length > 60 ? "…" : ""}</p>
                       </td>
                       <td className="p-4 hidden md:table-cell">
-                        <span className="bg-saffron/10 text-saffron text-xs font-semibold px-2 py-1 rounded-full">{s.field}</span>
+                        <span className="bg-saffron/10 text-saffron text-xs font-semibold px-2 py-1 rounded-full">{FIELD_META[s.field]?.icon} {s.field}</span>
                       </td>
                       <td className="p-4 hidden md:table-cell text-gray-600">{s.city}, {s.state}</td>
                       <td className="p-4 hidden lg:table-cell text-gray-600">{s.views || 0}</td>
@@ -167,8 +234,10 @@ export default function Admin() {
                       </td>
                     </tr>
                   ))}
-                  {stories.length === 0 && (
-                    <tr><td colSpan={5} className="p-10 text-center text-gray-500">No stories yet. Add your first one.</td></tr>
+                  {filteredStories.length === 0 && (
+                    <tr><td colSpan={5} className="p-10 text-center text-gray-500">
+                      {fieldFilter === "All" ? "No journeys yet. Add your first one." : `No journeys in ${fieldFilter} yet.`}
+                    </td></tr>
                   )}
                 </tbody>
               </table>
@@ -190,7 +259,7 @@ export default function Admin() {
         <div className="fixed inset-0 bg-black/60 z-[80] flex items-center justify-center p-5 overflow-y-auto">
           <div className="bg-white rounded-2xl max-w-3xl w-full my-10 max-h-[90vh] overflow-y-auto">
             <div className="sticky top-0 bg-white border-b border-black/5 p-5 flex items-center justify-between">
-              <h2 className="font-cinzel text-2xl font-bold">{creating ? "Add Story" : "Edit Story"}</h2>
+              <h2 className="font-cinzel text-2xl font-bold">{creating ? "Add Journey" : "Edit Journey"}</h2>
               <button onClick={closeEditor} data-testid="close-editor" className="text-gray-500 hover:text-[#1a1a1a]"><X size={20}/></button>
             </div>
             <form onSubmit={save} className="p-6 space-y-4">

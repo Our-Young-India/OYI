@@ -265,7 +265,7 @@ export default function NominationsPanel({ nominations, reload, openAddStory }) 
             tags: [],
             __nominationId: nom.id,
           });
-          toast.info("Story form pre-filled. Save to publish, then mark published.");
+          toast.info("Journey form pre-filled. Save to publish, then mark published.");
         }
         break;
       default:
