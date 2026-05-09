@@ -4,7 +4,7 @@ import api from "../lib/api";
 import StatsSection from "../components/StatsSection";
 import { Sparkles, Star, Instagram, Youtube, Mic } from "lucide-react";
 
-const SHARANYA_PHOTO = "https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=900&q=80";
+const SHARANYA_PHOTO = "https://customer-assets.emergentagent.com/job_stories-live-preview/artifacts/jjms559r_IMG_20260327_103427.jpg";
 
 const STEPS = [
   { icon: "🌱", title: "SPARK", description: "What ignited their passion? The moment it all began." },
@@ -66,9 +66,16 @@ export default function About() {
         <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full opacity-15 blur-3xl bg-india-green"/>
         <div className="max-w-6xl mx-auto px-5 lg:px-10 grid md:grid-cols-2 gap-12 items-start relative">
           <div className="relative md:sticky md:top-[100px]">
-            <div className="aspect-[4/5] rounded-3xl overflow-hidden border-4 border-saffron/20 shadow-2xl">
-              <img src={SHARANYA_PHOTO} alt="Sharanya Mena" className="w-full h-full object-cover"/>
-            </div>
+            <div
+              className="aspect-[4/5] rounded-3xl border-4 border-saffron/20 shadow-2xl bg-no-repeat"
+              style={{
+                backgroundImage: `url(${SHARANYA_PHOTO})`,
+                backgroundSize: "320% auto",
+                backgroundPosition: "12% 22%"
+              }}
+              role="img"
+              aria-label="Sharanya Mena"
+            />
             <div className="absolute -bottom-6 -right-6 bg-saffron text-white py-4 px-6 rounded-2xl shadow-2xl">
               <p className="font-cinzel font-bold text-2xl">9 years</p>
               <p className="font-mont text-xs uppercase tracking-wider">Founder & Host</p>

@@ -8,7 +8,7 @@ import { ChevronLeft, ChevronRight, Sparkles, Star, Mic, ArrowRight, Instagram, 
 const HERO_IMAGE = "https://customer-assets.emergentagent.com/job_stories-live-preview/artifacts/lbmx61u2_file_000000002f207207ad65e9d8d87e293b.png";
 const LOGO_FULL = "https://customer-assets.emergentagent.com/job_7e34814e-aac7-419b-9cb6-23c99755e0df/artifacts/b3mlbrqx_file_000000002f207207ad65e9d8d87e293b.png";
 
-const SHARANYA_PHOTO = "https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=900&q=80";
+const SHARANYA_PHOTO = "https://customer-assets.emergentagent.com/job_stories-live-preview/artifacts/jjms559r_IMG_20260327_103427.jpg";
 
 const categories = [
   { icon: "📚", label: "Academics", value: "Academics", img: "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=600&q=80" },
@@ -145,9 +145,17 @@ export default function Home() {
         <div className="sun-rays absolute inset-0 opacity-40" aria-hidden/>
         <div className="max-w-6xl mx-auto px-5 lg:px-10 grid md:grid-cols-2 gap-12 items-center relative">
           <div className="relative">
-            <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl" style={{ boxShadow: "0 0 0 6px rgba(255, 215, 0, 0.3), 0 25px 60px rgba(255, 153, 51, 0.4)" }}>
-              <img src={SHARANYA_PHOTO} alt="Sharanya Mena, age 9" className="w-full h-full object-cover"/>
-            </div>
+            <div
+              className="aspect-[4/5] rounded-3xl shadow-2xl bg-no-repeat"
+              style={{
+                backgroundImage: `url(${SHARANYA_PHOTO})`,
+                backgroundSize: "320% auto",
+                backgroundPosition: "12% 22%",
+                boxShadow: "0 0 0 6px rgba(255, 215, 0, 0.3), 0 25px 60px rgba(255, 153, 51, 0.4)"
+              }}
+              role="img"
+              aria-label="Sharanya Mena, age 9"
+            />
             <div className="absolute -bottom-6 -right-6 text-white py-4 px-6 rounded-2xl shadow-2xl" style={{ background: "linear-gradient(135deg, #FF9933 0%, #FFD700 100%)" }}>
               <p className="font-cinzel font-bold text-2xl">9 yrs</p>
               <p className="font-mont text-xs uppercase tracking-wider">Founder & Host</p>
