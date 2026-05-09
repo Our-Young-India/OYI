@@ -46,7 +46,8 @@ export default function Home() {
           <img
             src={HERO_IMAGE}
             alt="Our Young India — children with passion"
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-center sm:object-center"
+            style={{ objectPosition: "center 40%" }}
           />
           {/* Warm dark gradient overlay for text legibility */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-[#0D0D0D]/95" aria-hidden />
@@ -230,7 +231,7 @@ export default function Home() {
           <p className="font-mont text-white/95 text-lg max-w-2xl mx-auto mb-10" style={{ textShadow: "0 2px 8px rgba(0,0,0,0.2)" }}>
             Nominate them to be featured on Our Young India. Every story matters — every kid deserves to be seen.
           </p>
-          <Link to="/nominate" data-testid="cta-nominate-now" className="inline-flex items-center gap-2 bg-white text-saffron font-mont font-bold rounded-full px-8 py-4 hover:scale-105 transition-transform shadow-2xl">
+          <Link to="/nominate#nominate-form" data-testid="cta-nominate-now" className="inline-flex items-center gap-2 bg-white text-saffron font-mont font-bold rounded-full px-8 py-4 hover:scale-105 transition-transform shadow-2xl">
             <Star size={18}/> Nominate Now
           </Link>
         </div>

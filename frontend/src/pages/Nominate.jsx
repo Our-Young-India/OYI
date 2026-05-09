@@ -39,6 +39,18 @@ export default function Nominate() {
   const [uploading, setUploading] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
 
+  // Scroll to form if hash is present
+  React.useEffect(() => {
+    if (window.location.hash === '#nominate-form') {
+      setTimeout(() => {
+        const element = document.getElementById('nominate-form');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+  }, []);
+
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }));
 
   const onFile = async (e) => {
@@ -113,7 +125,7 @@ export default function Nominate() {
       </section>
 
       {/* Form */}
-      <section className="max-w-3xl mx-auto px-5 lg:px-10 py-14">
+      <section id="nominate-form" className="max-w-3xl mx-auto px-5 lg:px-10 py-14">
         <form data-testid="nominate-form" onSubmit={submit} className="bg-white rounded-3xl p-8 lg:p-10 shadow-lg border border-black/5 space-y-8">
           {/* Your info */}
           <div>
