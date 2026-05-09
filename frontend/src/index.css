@@ -4,12 +4,29 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Hide Emergent badge */
-#emergent-badge {
+/* Hide Emergent badge - stronger rules */
+#emergent-badge,
+a[href*="emergent"][href*="badge"],
+a[href*="utm_source=emergent-badge"] {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
   pointer-events: none !important;
+  position: absolute !important;
+  left: -9999px !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Mobile-specific badge hiding */
+@media (max-width: 768px) {
+  #emergent-badge,
+  a[href*="emergent"][href*="badge"],
+  a[href*="utm_source=emergent-badge"] {
+    display: none !important;
+    visibility: hidden !important;
+  }
 }
 
 
