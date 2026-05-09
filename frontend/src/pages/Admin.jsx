@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import api from "../lib/api";
 import { toast } from "sonner";
 import { LogOut, Plus, Edit, Trash2, X, Inbox, Film } from "lucide-react";
+import NominationsPanel from "./NominationsPanel";
 
 const FIELDS = ["Academics", "Sports", "Arts", "Technology", "Social Impact", "Entertainment", "Science", "Literature"];
 
@@ -44,6 +45,10 @@ export default function Admin() {
 
   const startCreate = () => { setForm(emptyStory); setCreating(true); setEditing(null); };
   const startEdit = (s) => { setForm({ ...emptyStory, ...s, age: s.age || 10 }); setEditing(s); setCreating(false); };
+  const startCreatePrefilled = (data) => {
+    setForm({ ...emptyStory, ...data, age: data.age || 10 });
+    setCreating(true); setEditing(null); setTab("stories");
+  };
 
   const closeEditor = () => { setEditing(null); setCreating(false); setForm(emptyStory); };
 
@@ -158,31 +163,11 @@ export default function Admin() {
         )}
 
         {tab === "nominations" && (
-          <>
-            <h2 className="font-cinzel text-2xl font-bold mb-6">Nominations</h2>
-            <div className="grid md:grid-cols-2 gap-4">
-              {nominations.map(n => (
-                <div key={n.id} data-testid={`nomination-${n.id}`} className="bg-white rounded-2xl p-6 border border-black/5">
-                  <div className="flex items-start justify-between mb-3">
-                    <div>
-                      <h3 className="font-cinzel font-bold text-lg">{n.nominee_name}</h3>
-                      <p className="font-mont text-xs text-gray-500">{n.nominee_age} yrs · {n.field} · {n.city}, {n.state}</p>
-                    </div>
-                    <span className="text-xs font-mont bg-saffron/10 text-saffron px-2 py-1 rounded-full">{n.status}</span>
-                  </div>
-                  <p className="font-mont text-sm text-gray-700 mb-3">{n.achievement_brief}</p>
-                  <div className="font-mont text-xs text-gray-500 space-y-1">
-                    <p><strong>Why feature:</strong> {n.why_feature.slice(0, 150)}{n.why_feature.length > 150 ? "…" : ""}</p>
-                    <p><strong>Nominator:</strong> {n.your_name} ({n.relationship}) · {n.your_email}</p>
-                    <p><strong>Contact:</strong> {n.contact_info}</p>
-                  </div>
-                </div>
-              ))}
-              {nominations.length === 0 && (
-                <p className="col-span-2 text-center text-gray-500 py-10 font-mont">No nominations yet.</p>
-              )}
-            </div>
-          </>
+          <NominationsPanel
+            nominations={nominations}
+            reload={loadNominations}
+            openAddStory={startCreatePrefilled}
+          />
         )}
       </div>
 

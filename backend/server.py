@@ -160,6 +160,12 @@ class StoryCreate(BaseModel):
     tags: List[str] = []
 
 
+class StatusHistoryEntry(BaseModel):
+    status: str
+    note: str = ""
+    timestamp: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
+
+
 class Nomination(BaseModel):
     model_config = ConfigDict(extra="ignore")
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
@@ -178,7 +184,12 @@ class Nomination(BaseModel):
     instagram: str = ""
     youtube: str = ""
     consent: bool = True
-    status: str = "new"  # new, reviewed, accepted, rejected
+    status: str = "pending"  # pending, approved, contacted, scheduled, in_production, published, rejected, needs_info
+    internal_notes: str = ""
+    rejection_reason: str = ""
+    interview_date: str = ""
+    interview_link: str = ""
+    status_history: List[StatusHistoryEntry] = []
     created_at: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
 
 
@@ -436,6 +447,7 @@ async def get_categories():
 @api_router.post("/nominations")
 async def create_nomination(payload: NominationCreate):
     nom = Nomination(**payload.model_dump())
+    nom.status_history = [StatusHistoryEntry(status="pending", note="Submitted via website")]
     await db.nominations.insert_one(dict(nom.model_dump()))
     return {"ok": True, "id": nom.id, "nominee_name": nom.nominee_name}
 
@@ -443,15 +455,70 @@ async def create_nomination(payload: NominationCreate):
 @api_router.get("/nominations")
 async def list_nominations(_admin: dict = Depends(admin_required)):
     items = await db.nominations.find({}, {"_id": 0}).sort([("created_at", -1)]).to_list(500)
+    # Backfill: normalize legacy "new" status to "pending"
+    for it in items:
+        if it.get("status") == "new":
+            it["status"] = "pending"
+        if not it.get("status_history"):
+            it["status_history"] = [{
+                "status": it.get("status", "pending"),
+                "note": "Submitted",
+                "timestamp": it.get("created_at", datetime.now(timezone.utc).isoformat())
+            }]
     return {"items": items}
 
 
+class NominationUpdate(BaseModel):
+    status: Optional[str] = None
+    note: Optional[str] = ""
+    internal_notes: Optional[str] = None
+    rejection_reason: Optional[str] = None
+    interview_date: Optional[str] = None
+    interview_link: Optional[str] = None
+
+
+VALID_NOM_STATUSES = {"pending", "approved", "contacted", "scheduled", "in_production", "published", "rejected", "needs_info"}
+
+
 @api_router.put("/nominations/{nom_id}")
-async def update_nomination(nom_id: str, status: str = Query(...), _admin: dict = Depends(admin_required)):
-    result = await db.nominations.update_one({"id": nom_id}, {"$set": {"status": status}})
-    if result.matched_count == 0:
+async def update_nomination(nom_id: str, payload: NominationUpdate, _admin: dict = Depends(admin_required)):
+    existing = await db.nominations.find_one({"id": nom_id}, {"_id": 0})
+    if not existing:
         raise HTTPException(status_code=404, detail="Not found")
-    return {"ok": True}
+
+    update_doc = {}
+    push_doc = {}
+
+    if payload.status is not None:
+        if payload.status not in VALID_NOM_STATUSES:
+            raise HTTPException(status_code=400, detail=f"Invalid status. Must be one of {sorted(VALID_NOM_STATUSES)}")
+        if payload.status != existing.get("status"):
+            update_doc["status"] = payload.status
+            push_doc["status_history"] = {
+                "status": payload.status,
+                "note": payload.note or "",
+                "timestamp": datetime.now(timezone.utc).isoformat(),
+            }
+    if payload.internal_notes is not None:
+        update_doc["internal_notes"] = payload.internal_notes
+    if payload.rejection_reason is not None:
+        update_doc["rejection_reason"] = payload.rejection_reason
+    if payload.interview_date is not None:
+        update_doc["interview_date"] = payload.interview_date
+    if payload.interview_link is not None:
+        update_doc["interview_link"] = payload.interview_link
+
+    mongo_update = {}
+    if update_doc:
+        mongo_update["$set"] = update_doc
+    if push_doc:
+        mongo_update["$push"] = push_doc
+
+    if mongo_update:
+        await db.nominations.update_one({"id": nom_id}, mongo_update)
+
+    updated = await db.nominations.find_one({"id": nom_id}, {"_id": 0})
+    return updated
 
 
 # ---------- Comments ----------
