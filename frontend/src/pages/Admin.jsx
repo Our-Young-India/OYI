@@ -55,13 +55,27 @@ export default function Admin() {
   const save = async (e) => {
     e.preventDefault();
     try {
+      const { __nominationId, ...rest } = form;
       const payload = {
-        ...form,
+        ...rest,
         age: parseInt(form.age, 10) || 10,
       };
       if (creating) {
         await api.post("/stories", payload);
         toast.success("Story created");
+        // If this story came from a nomination, auto-mark nomination as published
+        if (__nominationId) {
+          try {
+            await api.put(`/nominations/${__nominationId}`, {
+              status: "published",
+              note: `Published as story: ${payload.name}`,
+            });
+            toast.success("Nomination marked as Published");
+            await loadNominations();
+          } catch {
+            toast.error("Story saved, but failed to update nomination status");
+          }
+        }
       } else if (editing) {
         await api.put(`/stories/${editing.id}`, payload);
         toast.success("Story updated");
