@@ -92,7 +92,7 @@ export default function Footer() {
 
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-5 lg:px-10 py-6 flex flex-col md:flex-row items-center gap-4 justify-between">
-          <span className="font-mont text-xs text-white/60">© 2025 Our Young India. All rights reserved.</span>
+          <span className="font-mont text-xs text-white/60">© 2026 Our Young India. All rights reserved.</span>
           <span className="font-cinzel text-xs tracking-widest">
             <span className="text-saffron">our</span><span className="text-white">young</span><span className="text-india-green">india.in</span>
           </span>

@@ -9,10 +9,10 @@ const RELATIONS = ["Parent", "Teacher", "Friend", "Self", "Other"];
 const STATES = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Delhi", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal", "Other"];
 
 const STEPS = [
-  { icon: "✅", title: "We Review", desc: "Within 7 days, our team reviews all nominations." },
-  { icon: "📞", title: "We Reach Out", desc: "If selected, we contact the nominee or their guardian via email or phone." },
-  { icon: "🎤", title: "Interview Scheduled", desc: "We schedule a comfortable online or in-person interview with Sharanya." },
-  { icon: "🎬", title: "Story Goes Live", desc: "The interview is edited, published on YouTube, and featured on our website." },
+  { icon: "✅", title: "We Review", desc: "Within 7 days, our team reviews all nominations.", gradient: "from-[#FF9933] to-amber-500", glow: "rgba(255, 153, 51, 0.4)" },
+  { icon: "📞", title: "We Reach Out", desc: "If selected, we contact the nominee or their guardian via email or phone.", gradient: "from-purple-500 to-fuchsia-600", glow: "rgba(168, 85, 247, 0.4)" },
+  { icon: "🎤", title: "Interview Scheduled", desc: "We schedule a comfortable online or in-person interview with Sharanya.", gradient: "from-pink-500 to-rose-600", glow: "rgba(236, 72, 153, 0.4)" },
+  { icon: "🎬", title: "Story Goes Live", desc: "The interview is edited, published on YouTube, and featured on our website.", gradient: "from-emerald-500 to-green-600", glow: "rgba(16, 185, 129, 0.4)" },
 ];
 
 const FAQS = [
@@ -198,19 +198,38 @@ export default function Nominate() {
       </section>
 
       {/* What happens next */}
-      <section data-testid="what-next" className="bg-white py-20">
-        <div className="max-w-6xl mx-auto px-5 lg:px-10">
+      <section data-testid="what-next" className="py-24 relative overflow-hidden" style={{
+        background: "linear-gradient(135deg, #FFF1DC 0%, #FFE5D6 50%, #FFD9E8 100%)"
+      }}>
+        <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full opacity-20 blur-3xl bg-saffron"/>
+        <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full opacity-20 blur-3xl bg-purple-400"/>
+        <div className="relative max-w-6xl mx-auto px-5 lg:px-10">
           <div className="text-center mb-14">
-            <p className="font-cormorant italic text-saffron text-lg mb-1">The Journey From Here</p>
-            <h2 className="font-cinzel text-3xl sm:text-4xl font-bold">What Happens Next?</h2>
+            <p className="font-cormorant italic text-saffron text-lg mb-2">The Journey From Here</p>
+            <h2 className="font-cinzel text-3xl sm:text-5xl font-bold text-[#1a1a1a]">What Happens Next?</h2>
+            <div className="flex items-center justify-center mt-4 gap-3 text-gold">
+              <span className="h-px w-10 bg-gold/60"/>
+              <span className="gold-star text-xl">★</span>
+              <span className="h-px w-10 bg-gold/60"/>
+            </div>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {STEPS.map((s, i) => (
-              <div key={s.title} className="hover-lift bg-[#FAF7F2] rounded-2xl p-7 fade-up" style={{ animationDelay: `${i * 80}ms` }}>
-                <div className="text-4xl mb-4">{s.icon}</div>
-                <p className="font-mont text-xs uppercase tracking-[0.3em] text-saffron mb-1">Step {i+1}</p>
-                <h3 className="font-cinzel text-xl font-bold mb-2">{s.title}</h3>
-                <p className="font-mont text-sm text-gray-700 leading-relaxed">{s.desc}</p>
+              <div
+                key={s.title}
+                className={`hover-lift bg-gradient-to-br ${s.gradient} rounded-3xl p-7 text-white shadow-xl fade-up relative overflow-hidden`}
+                style={{ animationDelay: `${i * 90}ms`, boxShadow: `0 18px 40px -12px ${s.glow}` }}
+              >
+                <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-white/15 blur-2xl"/>
+                <div className="relative">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="text-5xl" aria-hidden>{s.icon}</div>
+                    <span className="font-cinzel font-bold text-3xl text-white/40">0{i + 1}</span>
+                  </div>
+                  <p className="font-mont text-xs uppercase tracking-[0.2em] text-white/85 mb-1 font-semibold">Step {i+1}</p>
+                  <h3 className="font-cinzel text-xl font-bold mb-2" style={{ textShadow: "0 2px 8px rgba(0,0,0,0.2)" }}>{s.title}</h3>
+                  <p className="font-mont text-sm leading-relaxed text-white/95">{s.desc}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -218,25 +237,68 @@ export default function Nominate() {
       </section>
 
       {/* FAQs */}
-      <section data-testid="faq-section" className="bg-[#FAF7F2] py-20">
-        <div className="max-w-3xl mx-auto px-5 lg:px-10">
-          <div className="text-center mb-10">
-            <p className="font-cormorant italic text-saffron text-lg mb-1">Curious?</p>
-            <h2 className="font-cinzel text-3xl sm:text-4xl font-bold">Frequently Asked Questions</h2>
+      <section data-testid="faq-section" className="py-24 relative overflow-hidden" style={{
+        background: "linear-gradient(135deg, #1a0a00 0%, #2d1b00 50%, #4A0E0E 100%)"
+      }}>
+        <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full opacity-25 blur-3xl bg-cyan-500"/>
+        <div className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full opacity-25 blur-3xl bg-pink-500"/>
+        <div className="sun-rays absolute inset-0 opacity-20"/>
+        <div className="relative max-w-3xl mx-auto px-5 lg:px-10">
+          <div className="text-center mb-12">
+            <p className="font-cormorant italic text-yellow-300 text-lg mb-2">Curious?</p>
+            <h2 className="font-cinzel text-3xl sm:text-5xl font-bold text-white" style={{ textShadow: "0 4px 20px rgba(0,0,0,0.5)" }}>Frequently Asked Questions</h2>
+            <div className="flex items-center justify-center mt-4 gap-3 text-yellow-300">
+              <span className="h-px w-10 bg-yellow-300/60"/>
+              <span className="text-xl">★</span>
+              <span className="h-px w-10 bg-yellow-300/60"/>
+            </div>
           </div>
           <div className="space-y-3">
-            {FAQS.map((f, i) => (
-              <div key={i} data-testid={`faq-${i}`} className="bg-white rounded-xl border border-black/5 overflow-hidden">
-                <button onClick={() => setOpenFaq(o => o === i ? null : i)} className="w-full flex items-center justify-between p-5 text-left">
-                  <span className="font-cinzel font-bold text-lg text-[#1a1a1a]">{f.q}</span>
-                  <ChevronDown size={20} className={`text-saffron transition-transform ${openFaq === i ? 'rotate-180' : ''}`}/>
-                </button>
-                {openFaq === i && (
-                  <div className="px-5 pb-5 font-mont text-gray-700 leading-relaxed border-t border-black/5 pt-4">{f.a}</div>
-                )}
-              </div>
-            ))}
+            {FAQS.map((f, i) => {
+              const accents = [
+                "from-orange-500 to-pink-500",
+                "from-purple-500 to-fuchsia-500",
+                "from-emerald-500 to-cyan-500",
+                "from-pink-500 to-rose-500",
+                "from-amber-500 to-orange-500",
+                "from-blue-500 to-indigo-500",
+              ];
+              const open = openFaq === i;
+              return (
+                <div
+                  key={i}
+                  data-testid={`faq-${i}`}
+                  className={`rounded-2xl overflow-hidden transition-all ${open ? "shadow-2xl scale-[1.01]" : "shadow-lg"}`}
+                  style={{
+                    background: open
+                      ? `linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)`
+                      : "rgba(255,255,255,0.06)",
+                    border: "1px solid rgba(255,255,255,0.1)",
+                    backdropFilter: "blur(8px)",
+                  }}
+                >
+                  <button
+                    onClick={() => setOpenFaq(o => o === i ? null : i)}
+                    className="w-full flex items-center justify-between p-5 text-left hover:bg-white/5 transition-colors"
+                  >
+                    <div className="flex items-center gap-4 flex-1 min-w-0">
+                      <span className={`flex-shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br ${accents[i % accents.length]} flex items-center justify-center font-cinzel font-bold text-white shadow-lg`}>
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <span className="font-cinzel font-bold text-base sm:text-lg text-white">{f.q}</span>
+                    </div>
+                    <ChevronDown size={22} className={`text-yellow-300 transition-transform flex-shrink-0 ${open ? 'rotate-180' : ''}`}/>
+                  </button>
+                  {open && (
+                    <div className="px-5 pb-5 pl-[76px]">
+                      <p className="font-mont text-sm text-white/90 leading-relaxed border-l-2 border-yellow-300/50 pl-4">{f.a}</p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
+          <p className="text-center font-cormorant italic text-yellow-200 text-xl mt-10">Still have questions? Email us at <a href="mailto:hi@sharanyamena.com" className="underline hover:text-white">hi@sharanyamena.com</a></p>
         </div>
       </section>
     </div>
