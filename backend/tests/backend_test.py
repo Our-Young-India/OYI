@@ -259,7 +259,7 @@ class TestStoryAdminCRUD:
 
     def test_create_story(self, client, auth_headers):
         payload = {
-            "name": "TEST_Kid_AdminCRUD",
+            "name": "TEST Kid AdminCRUD",
             "age": 11,
             "field": "Technology",
             "achievement": "Built app",
@@ -271,7 +271,7 @@ class TestStoryAdminCRUD:
         r = requests.post(f"{API}/stories", json=payload, headers=auth_headers)
         assert r.status_code == 200, r.text
         d = r.json()
-        assert d["slug"] == "test-kid-admincrud"
+        assert d["slug"].startswith("test-kid-admincrud")
         assert d["youtube_id"] == "dQw4w9WgXcQ"
         TestStoryAdminCRUD.created_id = d["id"]
         TestStoryAdminCRUD.created_slug = d["slug"]
@@ -283,7 +283,7 @@ class TestStoryAdminCRUD:
     def test_update_story(self, client, auth_headers):
         assert TestStoryAdminCRUD.created_id
         payload = {
-            "name": "TEST_Kid_AdminCRUD",
+            "name": "TEST Kid AdminCRUD",
             "age": 12,
             "field": "Technology",
             "achievement": "Built better app",

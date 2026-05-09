@@ -82,9 +82,9 @@ export default function StoryDetail() {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center text-center px-5">
         <div className="text-6xl mb-4">🙈</div>
-        <h2 className="font-cinzel text-3xl font-bold mb-2">Story Not Found</h2>
-        <p className="font-mont text-gray-600 mb-6">We couldn't find this story.</p>
-        <Link to="/stories" data-testid="back-to-stories" className="btn-saffron">Back to Stories</Link>
+        <h2 className="font-cinzel text-3xl font-bold mb-2">Journey Not Found</h2>
+        <p className="font-mont text-gray-600 mb-6">We couldn't find this journey.</p>
+        <Link to="/stories" data-testid="back-to-stories" className="btn-saffron">Back to Journeys</Link>
       </div>
     );
   }

@@ -77,7 +77,7 @@ export default function Home() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center fade-up" style={{ animationDelay: "650ms" }}>
               <Link to="/stories" data-testid="hero-watch-stories" className="btn-saffron flex items-center gap-2">
-                <Sparkles size={18}/> Watch Stories
+                <Sparkles size={18}/> Watch Journeys
               </Link>
               <Link to="/nominate" data-testid="hero-nominate" className="btn-outline-gold flex items-center gap-2">
                 <Star size={18}/> Nominate a Star
@@ -100,7 +100,7 @@ export default function Home() {
           <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
             <div>
               <p className="font-cormorant italic text-saffron text-lg mb-1">Hot Off the Press</p>
-              <h2 className="font-cinzel text-3xl sm:text-5xl font-bold text-[#1a1a1a]">Latest Stories</h2>
+              <h2 className="font-cinzel text-3xl sm:text-5xl font-bold text-[#1a1a1a]">Latest Journeys</h2>
             </div>
             <div className="flex gap-3">
               <button data-testid="carousel-prev" onClick={prev} className="w-12 h-12 rounded-full bg-white border border-black/10 flex items-center justify-center hover:bg-saffron hover:text-white hover:border-saffron transition-all shadow-sm">
@@ -127,7 +127,7 @@ export default function Home() {
 
           <div className="text-center mt-10">
             <Link to="/stories" data-testid="view-all-stories" className="inline-flex items-center gap-2 font-mont font-semibold text-saffron hover:text-india-green transition-colors">
-              View all stories <ArrowRight size={18}/>
+              View all journeys <ArrowRight size={18}/>
             </Link>
           </div>
         </div>
@@ -200,7 +200,7 @@ export default function Home() {
                 <div className="absolute inset-0 flex flex-col justify-end p-5 text-white">
                   <span className="text-3xl mb-1" aria-hidden>{cat.icon}</span>
                   <h3 className="font-cinzel font-bold text-xl">{cat.label}</h3>
-                  <p className="font-mont text-xs text-white/80 group-hover:text-white">{categoryCounts[cat.value] || 0} {(categoryCounts[cat.value] || 0) === 1 ? "Story" : "Stories"}</p>
+                  <p className="font-mont text-xs text-white/80 group-hover:text-white">{categoryCounts[cat.value] || 0} {(categoryCounts[cat.value] || 0) === 1 ? "Journey" : "Journeys"}</p>
                   <span className="font-mont text-xs uppercase tracking-wider mt-2 opacity-0 group-hover:opacity-100 transition-opacity">Explore →</span>
                 </div>
               </Link>

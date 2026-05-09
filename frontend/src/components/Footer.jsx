@@ -32,7 +32,7 @@ export default function Footer() {
           <h4 className="font-cinzel text-gold text-sm uppercase tracking-widest mb-5">Explore</h4>
           <ul className="space-y-3 font-mont text-white/80">
             <li><Link to="/" data-testid="footer-link-home" className="hover:text-saffron transition-colors">Home</Link></li>
-            <li><Link to="/stories" data-testid="footer-link-stories" className="hover:text-saffron transition-colors">Stories</Link></li>
+            <li><Link to="/stories" data-testid="footer-link-stories" className="hover:text-saffron transition-colors">Journeys</Link></li>
             <li><Link to="/nominate" data-testid="footer-link-nominate" className="hover:text-saffron transition-colors">Nominate</Link></li>
             <li><Link to="/about" data-testid="footer-link-about" className="hover:text-saffron transition-colors">About</Link></li>
             <li><a href="#" className="hover:text-saffron transition-colors">Privacy Policy</a></li>

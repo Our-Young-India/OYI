@@ -6,7 +6,7 @@ const LOGO_URL = "https://customer-assets.emergentagent.com/job_7e34814e-aac7-41
 
 const navItems = [
   { to: "/", label: "Home" },
-  { to: "/stories", label: "Stories" },
+  { to: "/stories", label: "Journeys" },
   { to: "/nominate", label: "Nominate" },
   { to: "/about", label: "About" },
 ];
@@ -62,7 +62,7 @@ export default function Navbar() {
               </NavLink>
             ))}
             <Link to="/stories" data-testid="nav-cta-watch" className="btn-saffron text-sm">
-              <Sparkles className="inline mr-2 h-4 w-4" /> Watch Stories
+              <Sparkles className="inline mr-2 h-4 w-4" /> Watch Journeys
             </Link>
           </nav>
 
@@ -92,7 +92,7 @@ export default function Navbar() {
                 </NavLink>
               ))}
               <Link to="/stories" data-testid="mobile-cta-watch" className="btn-saffron text-center text-sm mt-2">
-                <Sparkles className="inline mr-2 h-4 w-4" /> Watch Stories
+                <Sparkles className="inline mr-2 h-4 w-4" /> Watch Journeys
               </Link>
             </div>
           </div>

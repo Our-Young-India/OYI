@@ -149,7 +149,7 @@ export default function About() {
           <div className="grid md:grid-cols-3 gap-6">
             <Link to="/stories" data-testid="join-watch" className="hover-lift bg-white rounded-2xl p-8 border border-black/5 shadow-sm group">
               <div className="text-5xl mb-4">🎥</div>
-              <h3 className="font-cinzel text-2xl font-bold mb-2">Watch Stories</h3>
+              <h3 className="font-cinzel text-2xl font-bold mb-2">Watch Journeys</h3>
               <p className="font-mont text-gray-600 text-sm mb-5">Discover incredible journeys</p>
               <span className="inline-flex items-center gap-2 text-saffron font-mont font-semibold group-hover:gap-3 transition-all">
                 Explore <Sparkles size={16}/>

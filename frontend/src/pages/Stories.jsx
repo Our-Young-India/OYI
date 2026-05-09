@@ -147,13 +147,13 @@ export default function Stories() {
         ) : stories.length === 0 ? (
           <div data-testid="stories-empty" className="text-center py-20">
             <div className="text-6xl mb-4">🔍</div>
-            <h3 className="font-cinzel text-2xl font-bold mb-2">No stories found</h3>
+            <h3 className="font-cinzel text-2xl font-bold mb-2">No journeys found</h3>
             <p className="font-mont text-gray-600 mb-6">Try adjusting your filters or search term.</p>
             <button onClick={clearAll} data-testid="empty-clear" className="btn-saffron">Clear All Filters</button>
           </div>
         ) : (
           <>
-            <p className="font-mont text-sm text-gray-600 mb-6">{stories.length} {stories.length === 1 ? "story" : "stories"} found</p>
+            <p className="font-mont text-sm text-gray-600 mb-6">{stories.length} {stories.length === 1 ? "journey" : "journeys"} found</p>
             <div data-testid="stories-grid" className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {stories.map((s, i) => <StoryCard key={s.id} story={s} index={i}/>)}
             </div>

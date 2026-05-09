@@ -87,7 +87,7 @@ export default function Nominate() {
             it within 7 days and reach out via email if selected. In the meantime, explore other inspiring stories!
           </p>
           <div className="flex gap-3 justify-center flex-wrap">
-            <Link to="/stories" data-testid="thank-explore" className="btn-saffron">Watch Stories</Link>
+            <Link to="/stories" data-testid="thank-explore" className="btn-saffron">Watch Journeys</Link>
             <button onClick={() => { setSubmitted(null); setForm(initialForm); }} data-testid="thank-another" className="btn-outline-gold !text-[#1a1a1a] !border-[#1a1a1a]">Nominate another</button>
           </div>
         </div>
