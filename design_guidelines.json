@@ -1,0 +1,124 @@
+{
+  "theme_and_archetype": {
+    "theme": "dark_and_light_hybrid",
+    "archetype": "5 (Jewel & Luxury) with 1 (Organic & Earthy)",
+    "reasoning": "The brand requires a patriotic, cinematic (dark) hero but child-friendly and readable (light) content sections. Uses Deep Black/Dark Gray for high-impact cinematic hero, and Light Gray for readable, accessible story text. Brand tricolors applied strategically."
+  },
+  "colors": {
+    "brand": {
+      "saffron": "#FF9933",
+      "white": "#FFFFFF",
+      "green": "#138808",
+      "gold": "#FFD700"
+    },
+    "backgrounds": {
+      "deep_black": "#0D0D0D",
+      "dark_gray": "#1A1A1A",
+      "light_gray": "#F5F5F5"
+    },
+    "text": {
+      "primary_dark_mode": "#FFFFFF",
+      "secondary_dark_mode": "#F5F5F5",
+      "primary_light_mode": "#1A1A1A",
+      "secondary_light_mode": "#0D0D0D"
+    },
+    "accents": {
+      "sunburst_gradient": "radial-gradient(circle, #FF9933 0%, rgba(255,153,51,0) 70%)"
+    }
+  },
+  "typography": {
+    "headings": {
+      "family": "Cinzel, serif",
+      "usage": "H1, H2, large numbers, stats",
+      "tracking": "tracking-tight"
+    },
+    "body": {
+      "family": "Montserrat, sans-serif",
+      "usage": "Paragraphs, labels, button text, standard UI text",
+      "tracking": "tracking-normal"
+    },
+    "accents": {
+      "family": "Cormorant Garamond, serif",
+      "style": "italic",
+      "usage": "Taglines, blockquotes, subtitles, 'Pure Passion. Incredible Journeys.'"
+    }
+  },
+  "spacing_and_layout": {
+    "general": "Use generous padding (p-8, p-12, p-16) to give content breathing room. Ensure high contrast for readability for children and parents.",
+    "hero": "Cinematic. Use deep black background with sunburst/tricolor accents. Text should be large, clear, and white with gold or saffron highlights.",
+    "grids": "Use Bento grid (Tetris style) for featured stories or categories. grid-cols-1 md:grid-cols-8 lg:grid-cols-12 for asymmetry and interest.",
+    "borders_and_surfaces": "For dark sections: Glassmorphism with deep black/60 and subtle gold/10 border. For light sections: Flat light gray cards with soft shadow-lg and rounded corners."
+  },
+  "visual_enhancers": {
+    "separators": "Use gold star icons to separate sections or inline text.",
+    "accents": "Tricolor stripes (Saffron, White, Green) as top borders on cards or header.",
+    "motion": "Silhouettes of children marching. Smooth staggered entrance animations. Hover lifts (-translate-y-1) on cards."
+  },
+  "components": {
+    "Card": "Use flat light gray #f5f5f5 backgrounds in light mode with subtle rounding (rounded-xl) and no excessive shadows. In dark mode, use #1a1a1a with a 1px border of gold or white opacity.",
+    "Button": "Primary: Saffron background with White text, hover: brightness increase. Secondary: Outline with Gold border and White text. Always include data-testid.",
+    "Accordion": "Clean lines, Cinzel for titles, Montserrat for content. Use in FAQ. Saffron active state for icons.",
+    "Dropdown": "Shadcn component, white background, black text, saffron hover states.",
+    "Input": "Shadcn input. Light mode: white background, black text. Rounded-md.",
+    "Tabs": "Shadcn tabs. Saffron active underline or background. Cinzel/Montserrat text.",
+    "Toast": "Sonner toast. Dark mode styled for cinematic feel."
+  },
+  "media": {
+    "logos": [
+      {
+        "url": "https://customer-assets.emergentagent.com/job_7e34814e-aac7-419b-9cb6-23c99755e0df/artifacts/b3mlbrqx_file_000000002f207207ad65e9d8d87e293b.png",
+        "description": "Full color tricolor flag logo and sunburst",
+        "category": "logo_light_mode"
+      },
+      {
+        "url": "https://customer-assets.emergentagent.com/job_7e34814e-aac7-419b-9cb6-23c99755e0df/artifacts/x9o54a2c_file_00000000a67471faa2c52ddbba3c154a.png",
+        "description": "Dark on black version logo",
+        "category": "logo_dark_mode"
+      }
+    ],
+    "image_urls": [
+      {
+        "url": "https://static.prod-images.emergentagent.com/jobs/7e34814e-aac7-419b-9cb6-23c99755e0df/images/1e6f362f85cbdfdbaa8cdc5e0bbf608a389c48ff3cdb87018f28aac2f276aa98.png",
+        "description": "Cinematic deep black background with subtle Saffron, White, and Green tricolor glowing light rays",
+        "category": "hero_background"
+      },
+      {
+        "url": "https://static.prod-images.emergentagent.com/jobs/7e34814e-aac7-419b-9cb6-23c99755e0df/images/e3709f904560cb610fa2408642ce1554e9f7af86c671fe92d9e0f03aa674ab06.png",
+        "description": "Silhouette of diverse children in motion, walking forward confidently",
+        "category": "hero_foreground_silhouette"
+      },
+      {
+        "url": "https://static.prod-images.emergentagent.com/jobs/7e34814e-aac7-419b-9cb6-23c99755e0df/images/2bbe999b1f2ba68035302f2ab0382a42a7408e0b3e8b3aaa8f60add2e097224d.png",
+        "description": "Golden star icon, 3d rendering, metallic shiny finish",
+        "category": "accent_icon"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1591050898137-996dcd1184d6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzR8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjBjaGlsZCUyMGF0aGxldGV8ZW58MHx8fHwxNzc4MzMwNzkzfDA&ixlib=rb-4.1.0&q=85",
+        "description": "Young Indian child runner",
+        "category": "story_athlete"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1774437894079-e560a59632f2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzJ8MHwxfHNlYXJjaHwzfHxpbmRpYW4lMjBjaGlsZCUyMHJlYWRpbmd8ZW58MHx8fHwxNzc4MzMwNzkzfDA&ixlib=rb-4.1.0&q=85",
+        "description": "Young Indian girl in traditional attire holding a book",
+        "category": "story_academic"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1572847748080-bac263fae977?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzR8MHwxfHNlYXJjaHwzfHxpbmRpYW4lMjBraWRzJTIwY2xhc3Nyb29tfGVufDB8fHx8MTc3ODMzMDc5M3ww&ixlib=rb-4.1.0&q=85",
+        "description": "Indian kids in classroom",
+        "category": "story_general"
+      }
+    ]
+  },
+  "instructions_to_main_agent": [
+    "Ensure standard HTML semantic tags are used appropriately with Tailwind.",
+    "Implement pure HTML+Tailwind for Marketing/Home page layouts rather than standard Shadcn 'cards', except for interactive elements.",
+    "Use generous padding p-12 or p-16 for sections.",
+    "For the hero, overlay the child silhouette image (`hero_foreground_silhouette`) over the cinematic tricolor background (`hero_background`). Place text dynamically.",
+    "For story detail pages, the layout should emphasize clarity with Light Gray (#f5f5f5) background to ensure readability.",
+    "Ensure 'Cinzel' font is loaded from Google Fonts for headings, 'Montserrat' for body, and 'Cormorant Garamond' for italics.",
+    "Include data-testid attributes on ALL interactive elements, buttons, inputs, links, forms.",
+    "Create the multi-step nomination form using Shadcn form elements customized with Saffron active states.",
+    "Provide a smooth responsive experience on mobile.",
+    "DO NOT use generic purple/teal gradients. Stick to Saffron, White, Green, Gold, Black, Grays."
+  ]
+}
