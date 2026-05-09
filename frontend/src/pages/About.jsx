@@ -57,10 +57,10 @@ const RESOURCES = [
 ];
 
 const PILLARS = [
-  { icon: Mic, title: "We Feature YOUR Story", body: "If you're doing something amazing, we want to share it. Free interview with Sharanya. Reach 50,000+ kids. Inspire others while building your portfolio.", cta: "Nominate Someone", to: "/nominate", color: "bg-gradient-to-br from-saffron to-amber-500" },
-  { icon: Users, title: "We Connect You with Mentors", body: "Need advice? Stuck somewhere? We connect you with kids who've \"been there.\" Ask questions, find study partners, join field-specific groups.", cta: "Join Community", to: "#", color: "bg-gradient-to-br from-purple-500 to-fuchsia-600" },
-  { icon: Sparkles, title: "We Share Opportunities", body: "Free competitions. Scholarship programs. Online courses with discounts. Talent hunts. Government schemes for young achievers. Follow us to never miss out.", cta: "Follow on Instagram", to: "#", color: "bg-gradient-to-br from-pink-500 to-rose-600" },
-  { icon: MessageCircle, title: "We Answer Your Questions", body: "Got a specific question? \"How do I start with zero budget?\" \"Which coding language first?\" Ask us — we'll find an achiever to answer or create content for you.", cta: "Ask a Question", to: "/nominate", color: "bg-gradient-to-br from-cyan-500 to-blue-600" },
+  { icon: Mic, title: "We Feature YOUR Story", body: "If you're doing something amazing, we want to share it. Free interview with Sharanya. Reach 50,000+ kids. Inspire others while building your portfolio.", cta: "Nominate Someone", to: "/nominate", external: false, color: "bg-gradient-to-br from-saffron to-amber-500" },
+  { icon: Users, title: "We Connect You with Mentors", body: "Need advice? Stuck somewhere? We connect you with kids who've \"been there.\" Ask questions, find study partners, join field-specific groups.", cta: "Join Community", to: "mailto:hi@sharanyamena.com?subject=Join%20Community%20%E2%80%94%20Our%20Young%20India", external: true, color: "bg-gradient-to-br from-purple-500 to-fuchsia-600" },
+  { icon: Sparkles, title: "We Share Opportunities", body: "Free competitions. Scholarship programs. Online courses with discounts. Talent hunts. Government schemes for young achievers. Follow us to never miss out.", cta: "Follow on Instagram", to: "#", external: true, color: "bg-gradient-to-br from-pink-500 to-rose-600" },
+  { icon: MessageCircle, title: "We Answer Your Questions", body: "Got a specific question? \"How do I start with zero budget?\" \"Which coding language first?\" Ask us — we'll find an achiever to answer or create content for you.", cta: "Ask a Question", to: "mailto:hi@sharanyamena.com?subject=Question%20for%20Our%20Young%20India", external: true, color: "bg-gradient-to-br from-cyan-500 to-blue-600" },
 ];
 
 const AUDIENCE = [
@@ -70,11 +70,11 @@ const AUDIENCE = [
 ];
 
 const HOW_TO_USE = [
-  { icon: Compass, title: "Find a Story That Speaks to You", body: "Browse by field, age, or achievement. Look for kids from similar backgrounds. The right story finds you when you're paying attention." },
-  { icon: Pencil, title: "Watch with a Notebook", body: "Write down: resources they used, their practice schedule, the first step they took, and the failures they faced." },
-  { icon: Rocket, title: "Take ONE Action Today", body: "Don't just watch and forget. Pick ONE thing from their advice. Do it TODAY. Not tomorrow. Today." },
-  { icon: Sparkles, title: "Share What You Learned", body: "Tell a friend. Post on social media. Tag us @ouryoungindia. Then start your own journey." },
-  { icon: Heart, title: "Come Back for Motivation", body: "When you feel stuck. When you want to quit. When you need a reminder. Remember — they did it. You can too." },
+  { icon: Compass, title: "Find a Story That Speaks to You", body: "Browse by field, age, or achievement. Look for kids from similar backgrounds. The right story finds you when you're paying attention.", gradient: "from-blue-500 to-cyan-500", glow: "rgba(59, 130, 246, 0.4)" },
+  { icon: Pencil, title: "Watch with a Notebook", body: "Write down: resources they used, their practice schedule, the first step they took, and the failures they faced.", gradient: "from-amber-500 to-orange-500", glow: "rgba(245, 158, 11, 0.4)" },
+  { icon: Rocket, title: "Take ONE Action Today", body: "Don't just watch and forget. Pick ONE thing from their advice. Do it TODAY. Not tomorrow. Today.", gradient: "from-pink-500 to-rose-500", glow: "rgba(236, 72, 153, 0.4)" },
+  { icon: Sparkles, title: "Share What You Learned", body: "Tell a friend. Post on social media. Tag us @ouryoungindia. Then start your own journey.", gradient: "from-purple-500 to-fuchsia-500", glow: "rgba(168, 85, 247, 0.4)" },
+  { icon: Heart, title: "Come Back for Motivation", body: "When you feel stuck. When you want to quit. When you need a reminder. Remember — they did it. You can too.", gradient: "from-emerald-500 to-green-600", glow: "rgba(16, 185, 129, 0.4)" },
 ];
 
 export default function About() {
@@ -101,7 +101,7 @@ export default function About() {
             <span className="font-mont text-sm uppercase tracking-[0.3em] text-white/90 font-semibold">About Our Young India</span>
           </div>
           <h1 className="font-cinzel text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-[1.05]" style={{ textShadow: "0 4px 24px rgba(0,0,0,0.3)" }}>
-            Where Your Dreams<br className="hidden sm:block"/> Meet <span className="gold-shimmer">Real Roadmaps</span>
+            Where Your Dreams<br className="hidden sm:block"/> Meet <span className="text-yellow-200" style={{ textShadow: "0 4px 24px rgba(0,0,0,0.5), 0 0 30px rgba(255, 235, 100, 0.6)" }}>Real Roadmaps</span>
           </h1>
           <p className="font-cormorant italic text-2xl sm:text-3xl text-white/95 max-w-3xl mx-auto" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.3)" }}>
             "You don't need to be perfect. You just need to start."
@@ -337,9 +337,15 @@ export default function About() {
                 </div>
                 <h3 className="font-cinzel text-2xl font-bold mb-3">{p.title}</h3>
                 <p className="font-mont text-sm text-white/95 leading-relaxed mb-5">{p.body}</p>
-                <Link to={p.to} className="inline-flex items-center gap-2 bg-white/95 text-[#1a1a1a] font-mont font-semibold text-sm px-5 py-2.5 rounded-full hover:bg-white transition-all">
-                  {p.cta} <ArrowRight size={14}/>
-                </Link>
+                {p.external ? (
+                  <a href={p.to} className="inline-flex items-center gap-2 bg-white/95 text-[#1a1a1a] font-mont font-semibold text-sm px-5 py-2.5 rounded-full hover:bg-white transition-all">
+                    {p.cta} <ArrowRight size={14}/>
+                  </a>
+                ) : (
+                  <Link to={p.to} className="inline-flex items-center gap-2 bg-white/95 text-[#1a1a1a] font-mont font-semibold text-sm px-5 py-2.5 rounded-full hover:bg-white transition-all">
+                    {p.cta} <ArrowRight size={14}/>
+                  </Link>
+                )}
               </div>
             ))}
           </div>
@@ -407,19 +413,24 @@ export default function About() {
           </div>
           <div className="space-y-5">
             {HOW_TO_USE.map((h, i) => (
-              <div key={h.title} className="hover-lift bg-white rounded-2xl p-6 shadow-md border border-black/5 flex items-start gap-5 fade-up" style={{ animationDelay: `${i * 70}ms` }}>
-                <div className="flex-shrink-0 flex flex-col items-center">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-saffron to-amber-500 text-white flex items-center justify-center font-cinzel font-bold text-xl shadow-lg">
+              <div
+                key={h.title}
+                className={`hover-lift bg-gradient-to-br ${h.gradient} rounded-2xl p-6 text-white shadow-xl flex items-start gap-5 fade-up relative overflow-hidden`}
+                style={{ animationDelay: `${i * 70}ms`, boxShadow: `0 18px 40px -12px ${h.glow}` }}
+              >
+                <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-white/15 blur-2xl"/>
+                <div className="relative flex-shrink-0 flex flex-col items-center">
+                  <div className="w-14 h-14 rounded-full bg-white/25 backdrop-blur-sm border border-white/40 text-white flex items-center justify-center font-cinzel font-bold text-xl shadow-lg">
                     {i + 1}
                   </div>
-                  {i < HOW_TO_USE.length - 1 && <div className="w-0.5 flex-1 mt-2 bg-gradient-to-b from-saffron/50 to-transparent min-h-[20px]"/>}
+                  {i < HOW_TO_USE.length - 1 && <div className="w-0.5 flex-1 mt-2 bg-white/30 min-h-[20px]"/>}
                 </div>
-                <div className="flex-1 pt-1">
-                  <div className="flex items-center gap-2 mb-1">
-                    <h3 className="font-cinzel text-xl font-bold text-[#1a1a1a]">{h.title}</h3>
-                    <h.icon size={18} className="text-saffron"/>
+                <div className="flex-1 pt-1 relative">
+                  <div className="flex items-center gap-2 mb-2">
+                    <h3 className="font-cinzel text-xl font-bold text-white" style={{ textShadow: "0 2px 8px rgba(0,0,0,0.2)" }}>{h.title}</h3>
+                    <h.icon size={18} className="text-white/90"/>
                   </div>
-                  <p className="font-mont text-sm text-gray-700 leading-relaxed">{h.body}</p>
+                  <p className="font-mont text-sm text-white/95 leading-relaxed">{h.body}</p>
                 </div>
               </div>
             ))}
@@ -498,7 +509,7 @@ export default function About() {
                 Nominate Yourself <ArrowRight size={16}/>
               </span>
             </Link>
-            <a href="#" data-testid="ready-help" className="hover-lift bg-gradient-to-br from-emerald-500 to-green-600 rounded-3xl p-8 text-white shadow-xl group">
+            <a href="mailto:hi@sharanyamena.com?subject=I%20need%20support%20%E2%80%94%20Our%20Young%20India&body=Hi%20Sharanya%2C%0A%0AI%27m%20reaching%20out%20because..." data-testid="ready-help" className="hover-lift bg-gradient-to-br from-emerald-500 to-green-600 rounded-3xl p-8 text-white shadow-xl group">
               <div className="text-5xl mb-4">🤝</div>
               <h3 className="font-cinzel text-3xl font-bold mb-3">Get Support</h3>
               <p className="font-mont text-white/95 mb-6 leading-relaxed">Ask questions. Find mentors. Join the community.</p>
