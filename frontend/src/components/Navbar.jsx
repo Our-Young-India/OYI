@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X, Sparkles } from "lucide-react";
 
-const LOGO_URL = "https://customer-assets.emergentagent.com/job_7e34814e-aac7-419b-9cb6-23c99755e0df/artifacts/x9o54a2c_file_00000000a67471faa2c52ddbba3c154a.png";
+const LOGO_URL = "https://customer-assets.emergentagent.com/job_stories-live-preview/artifacts/82eqpcy7_file_00000000770c71fab5b83363c28bbbfc.png";
 
 const navItems = [
   { to: "/", label: "Home" },
@@ -37,13 +37,16 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-5 lg:px-10 flex items-center justify-between h-[72px]">
-          <Link to="/" data-testid="nav-logo" className="flex items-center gap-3">
-            <img src={LOGO_URL} alt="Our Young India" className="h-12 w-12 rounded-full object-cover ring-2 ring-gold/60" />
+          <Link to="/" data-testid="nav-logo" className="flex items-center gap-3 group">
+            <div className="h-12 w-12 rounded-full bg-white p-1 shadow-md ring-2 ring-gold/60 overflow-hidden flex items-center justify-center">
+              <img src={LOGO_URL} alt="Our Young India" className="h-full w-full object-cover rounded-full" />
+            </div>
             <div className="hidden sm:flex flex-col leading-tight">
               <span className="font-cinzel font-bold text-lg tracking-wide" style={{ textShadow: "0 2px 8px rgba(0,0,0,0.5)" }}>
                 <span className="text-saffron">our</span>
                 <span className="text-white">young</span>
                 <span className="text-india-green" style={{ textShadow: "0 0 8px rgba(45, 184, 30, 0.6)" }}>india</span>
+                <span className="text-saffron">.in</span>
               </span>
               <span className="font-cormorant italic text-[11px] text-gold tracking-wider">Pure Passion. Incredible Journeys.</span>
             </div>
