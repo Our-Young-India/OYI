@@ -20,7 +20,7 @@ ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
 # MongoDB connection
-mongo_url = os.environ['mongodb+srv://oyi_admin:g4smbDjj9DEMRmSA@cluster0.l5bwr5i.mongodb.net/ouryoungindia?retryWrites=true&w=majority&ssl=true']
+mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(
     mongo_url,
     tls=True,
@@ -28,7 +28,7 @@ client = AsyncIOMotorClient(
     serverSelectionTimeoutMS=5000,
     connectTimeoutMS=5000
 )
-db = client[os.environ['ouryoungindia']]
+db = client[os.environ['DB_NAME']]
 
 # Constants
 JWT_SECRET = os.environ.get('JWT_SECRET', 'oyi-super-secret-change-in-prod')
