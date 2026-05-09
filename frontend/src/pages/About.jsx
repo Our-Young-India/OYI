@@ -57,14 +57,14 @@ const RESOURCES = [
 ];
 
 const PILLARS = [
-  { icon: Mic, title: "We Feature YOUR Story", body: "If you're doing something amazing, we want to share it. Free interview with Sharanya. Reach 50,000+ kids. Inspire others while building your portfolio.", cta: "Nominate Someone", to: "/nominate", external: false, color: "bg-gradient-to-br from-saffron to-amber-500" },
+  { icon: Mic, title: "We Feature YOUR Story", body: "If you're doing something amazing, we want to share it. Free interview with Sharanya. Reach 50,000+ kids. Inspire others while building your portfolio.", cta: "Nominate Someone", to: "/nominate", external: false, color: "bg-gradient-to-br from-[#FF9933] to-amber-500" },
   { icon: Users, title: "We Connect You with Mentors", body: "Need advice? Stuck somewhere? We connect you with kids who've \"been there.\" Ask questions, find study partners, join field-specific groups.", cta: "Join Community", to: "mailto:hi@sharanyamena.com?subject=Join%20Community%20%E2%80%94%20Our%20Young%20India", external: true, color: "bg-gradient-to-br from-purple-500 to-fuchsia-600" },
   { icon: Sparkles, title: "We Share Opportunities", body: "Free competitions. Scholarship programs. Online courses with discounts. Talent hunts. Government schemes for young achievers. Follow us to never miss out.", cta: "Follow on Instagram", to: "#", external: true, color: "bg-gradient-to-br from-pink-500 to-rose-600" },
   { icon: MessageCircle, title: "We Answer Your Questions", body: "Got a specific question? \"How do I start with zero budget?\" \"Which coding language first?\" Ask us — we'll find an achiever to answer or create content for you.", cta: "Ask a Question", to: "mailto:hi@sharanyamena.com?subject=Question%20for%20Our%20Young%20India", external: true, color: "bg-gradient-to-br from-cyan-500 to-blue-600" },
 ];
 
 const AUDIENCE = [
-  { title: "I want to START something", body: "You have a dream but don't know where to begin. You think you need money or connections (you don't). You're scared to try. You want a step-by-step roadmap.", arrow: "Watch kids who started from ZERO.", gradient: "from-saffron to-orange-600" },
+  { title: "I want to START something", body: "You have a dream but don't know where to begin. You think you need money or connections (you don't). You're scared to try. You want a step-by-step roadmap.", arrow: "Watch kids who started from ZERO.", gradient: "from-[#FF9933] to-orange-600" },
   { title: "I'm ALREADY doing something", body: "You're learning a skill. You're stuck at a level. You need motivation to keep going. You want to know \"what's next.\"", arrow: "See how others broke through plateaus.", gradient: "from-purple-500 to-fuchsia-600" },
   { title: "I want to HELP others", body: "You've achieved something. You want to inspire others. You have advice to share. You believe in this mission.", arrow: "Share YOUR story. Be the example.", gradient: "from-emerald-500 to-green-600" },
 ];
@@ -110,48 +110,75 @@ export default function About() {
       </section>
 
       {/* ============== SECTION 2: THE PROBLEM ============== */}
-      <section data-testid="problem-section" className="py-24 bg-warm-cream relative overflow-hidden">
-        <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full opacity-15 blur-3xl bg-saffron"/>
-        <div className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full opacity-15 blur-3xl bg-india-green"/>
-        <div className="relative max-w-4xl mx-auto px-5 lg:px-10">
+      <section data-testid="problem-section" className="py-24 relative overflow-hidden" style={{
+        background: "linear-gradient(135deg, #1a0a00 0%, #2d1b00 50%, #4A0E0E 100%)"
+      }}>
+        <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full opacity-25 blur-3xl bg-orange-500"/>
+        <div className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full opacity-25 blur-3xl bg-emerald-500"/>
+        <div className="sun-rays absolute inset-0 opacity-20"/>
+        <div className="relative max-w-5xl mx-auto px-5 lg:px-10">
           <div className="text-center mb-12">
-            <p className="font-cormorant italic text-saffron text-lg mb-2">The Truth Nobody Tells You</p>
-            <h2 className="font-cinzel text-4xl sm:text-5xl font-bold text-[#1a1a1a]">Why This Platform Exists</h2>
+            <p className="font-cormorant italic text-yellow-300 text-lg mb-2">The Truth Nobody Tells You</p>
+            <h2 className="font-cinzel text-4xl sm:text-5xl font-bold text-white" style={{ textShadow: "0 4px 20px rgba(0,0,0,0.5)" }}>Why This Platform Exists</h2>
           </div>
 
-          <div className="space-y-6 font-mont text-lg text-gray-700 leading-[1.8] mb-12">
-            <p>You see achievers on TV and social media.</p>
-            <p>They seem perfect. Talented from birth. Lucky. Rich. Connected.</p>
-            <p className="font-cormorant italic text-2xl text-[#1a1a1a]">And you think: <span className="text-saffron">"That's not me. I could never do that."</span></p>
-          </div>
-
-          {/* Pain points - red boxes */}
-          <div className="grid sm:grid-cols-2 gap-3 mb-12">
-            {PAIN_POINTS.map((p, i) => (
-              <div key={i} className="bg-red-50 border-l-4 border-red-500 rounded-r-xl p-4 flex items-start gap-3 hover-lift">
-                <X className="text-red-500 flex-shrink-0 mt-0.5" size={20}/>
-                <p className="font-mont text-sm text-red-900 leading-relaxed">{p}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="space-y-6 font-mont text-lg text-gray-700 leading-[1.8] mb-10">
-            <p className="font-cormorant italic text-2xl text-[#1a1a1a]">But here's the truth:</p>
-            <p className="text-xl"><strong>Every achiever you admire started EXACTLY where you are.</strong></p>
-            <p>Confused. Scared. Without resources. Without connections.</p>
-            <p>They just found ONE thing:</p>
-          </div>
-
-          {/* Solution box */}
-          <div className="rounded-3xl p-10 text-white text-center shadow-2xl relative overflow-hidden" style={{
-            background: "linear-gradient(135deg, #138808 0%, #2DB81E 50%, #FFD700 100%)"
-          }}>
-            <Flame className="mx-auto mb-4 text-yellow-200" size={48}/>
-            <p className="font-cinzel text-3xl sm:text-4xl font-bold mb-3" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.25)" }}>
-              A Clear Path
+          {/* Opening narrative — light card on dark */}
+          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 sm:p-10 mb-10 text-center space-y-4">
+            <p className="font-mont text-lg text-white/90 leading-relaxed">You see achievers on TV and social media.</p>
+            <p className="font-mont text-lg text-white/90 leading-relaxed">They seem perfect. <span className="text-orange-300">Talented from birth.</span> <span className="text-yellow-300">Lucky.</span> <span className="text-pink-300">Rich.</span> <span className="text-cyan-300">Connected.</span></p>
+            <p className="font-cormorant italic text-2xl sm:text-3xl text-white pt-3">And you think:</p>
+            <p className="font-cormorant italic text-3xl sm:text-4xl text-orange-300 font-bold" style={{ textShadow: "0 2px 12px rgba(255,107,53,0.4)" }}>
+              "That's not me. I could never do that."
             </p>
-            <p className="font-cormorant italic text-2xl text-white/95 mb-3">From "I want to" → "I did it."</p>
-            <p className="font-mont text-base text-white/90">That's what Our Young India gives you.</p>
+          </div>
+
+          {/* Pain points — colorful gradient cards on dark */}
+          <p className="font-cinzel text-2xl text-yellow-300 text-center mb-6 font-bold uppercase tracking-wider">The Doubts You Carry</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+            {PAIN_POINTS.map((p, i) => {
+              const colors = [
+                "from-red-500 to-rose-600",
+                "from-orange-500 to-amber-600",
+                "from-yellow-500 to-orange-500",
+                "from-rose-500 to-pink-600",
+                "from-amber-500 to-red-500",
+                "from-pink-500 to-rose-600",
+              ];
+              return (
+                <div key={i} className={`hover-lift bg-gradient-to-br ${colors[i]} rounded-2xl p-5 text-white shadow-xl flex items-start gap-3 fade-up`} style={{ animationDelay: `${i * 60}ms` }}>
+                  <div className="w-9 h-9 rounded-full bg-white/25 backdrop-blur-sm border border-white/40 flex items-center justify-center flex-shrink-0">
+                    <X className="text-white" size={18}/>
+                  </div>
+                  <p className="font-mont text-sm leading-relaxed font-medium" style={{ textShadow: "0 2px 6px rgba(0,0,0,0.2)" }}>{p}</p>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Truth reveal */}
+          <div className="text-center mb-10 space-y-3">
+            <p className="font-cormorant italic text-2xl sm:text-3xl text-white">But here's the truth:</p>
+            <p className="font-cinzel text-2xl sm:text-3xl text-yellow-300 font-bold leading-tight" style={{ textShadow: "0 2px 16px rgba(255,215,0,0.4)" }}>
+              Every achiever you admire started<br className="hidden sm:block"/> EXACTLY where you are.
+            </p>
+            <p className="font-mont text-lg text-white/80">Confused. Scared. Without resources. Without connections.</p>
+            <p className="font-mont text-lg text-white/80">They just found ONE thing:</p>
+          </div>
+
+          {/* Solution box — vibrant tricolor gradient */}
+          <div className="rounded-3xl p-10 text-white text-center shadow-2xl relative overflow-hidden" style={{
+            background: "linear-gradient(135deg, #FF9933 0%, #FFD700 50%, #138808 100%)"
+          }}>
+            <div className="absolute -top-20 -left-20 w-40 h-40 rounded-full bg-white/30 blur-2xl"/>
+            <div className="absolute -bottom-20 -right-20 w-40 h-40 rounded-full bg-yellow-200/40 blur-2xl"/>
+            <div className="relative">
+              <Flame className="mx-auto mb-4 text-white" size={56} style={{ filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.3))" }}/>
+              <p className="font-cinzel text-3xl sm:text-5xl font-bold mb-3" style={{ textShadow: "0 4px 16px rgba(0,0,0,0.3)" }}>
+                A Clear Path
+              </p>
+              <p className="font-cormorant italic text-2xl sm:text-3xl text-white mb-4">From "I want to" → "I did it."</p>
+              <p className="font-mont text-base sm:text-lg text-white/95 font-semibold">That's what Our Young India gives you.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -493,7 +520,7 @@ export default function About() {
             <h2 className="font-cinzel text-3xl sm:text-5xl font-bold text-[#1a1a1a]">What Will You Do Next?</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
-            <Link to="/stories" data-testid="ready-watch" className="hover-lift bg-gradient-to-br from-orange-500 to-saffron rounded-3xl p-8 text-white shadow-xl group">
+            <Link to="/stories" data-testid="ready-watch" className="hover-lift bg-gradient-to-br from-orange-500 to-[#FF9933] rounded-3xl p-8 text-white shadow-xl group">
               <div className="text-5xl mb-4">👀</div>
               <h3 className="font-cinzel text-3xl font-bold mb-3">Watch Stories</h3>
               <p className="font-mont text-white/95 mb-6 leading-relaxed">Get inspired. Find your roadmap. See what's possible.</p>

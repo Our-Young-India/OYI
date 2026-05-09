@@ -6,9 +6,9 @@ const LOGO_URL = "https://customer-assets.emergentagent.com/job_stories-live-pre
 
 const navItems = [
   { to: "/", label: "Home" },
+  { to: "/about", label: "About" },
   { to: "/stories", label: "Journeys" },
   { to: "/nominate", label: "Nominate" },
-  { to: "/about", label: "About" },
 ];
 
 export default function Navbar() {
