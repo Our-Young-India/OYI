@@ -63,7 +63,12 @@ export default function Stories() {
   if (age !== "all") activePills.push({ label: AGES.find(a => a.v === age)?.l || age, clear: () => setAge("all") });
 
   return (
-    <div data-testid="stories-page" className="bg-warm-cream min-h-screen">
+    <div data-testid="stories-page" className="min-h-screen relative" style={{
+      background: "linear-gradient(180deg, #FFF1DC 0%, #FFE5D6 30%, #FFF8EC 70%, #FFFFFF 100%)"
+    }}>
+      <div className="absolute top-[300px] -left-32 w-96 h-96 rounded-full opacity-15 blur-3xl bg-saffron pointer-events-none"/>
+      <div className="absolute top-[800px] -right-32 w-96 h-96 rounded-full opacity-15 blur-3xl bg-purple-400 pointer-events-none"/>
+      <div className="absolute top-[1500px] left-1/4 w-96 h-96 rounded-full opacity-10 blur-3xl bg-pink-400 pointer-events-none"/>
       {/* Page header */}
       <section className="bg-gradient-to-br from-[#4A0E0E] via-[#1a0a00] to-[#2d1b00] text-white py-16 relative overflow-hidden">
         <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full opacity-30 blur-3xl bg-saffron"/>
@@ -84,34 +89,34 @@ export default function Stories() {
       </section>
 
       {/* Filters */}
-      <section className="sticky top-[75px] z-30 bg-white border-b border-black/5 shadow-sm">
+      <section className="sticky top-[75px] z-30 backdrop-blur-md border-b border-saffron/20 shadow-md" style={{ background: "rgba(255, 255, 255, 0.92)" }}>
         <div className="max-w-7xl mx-auto px-5 lg:px-10 py-5">
           <div className="flex flex-col md:flex-row md:items-center gap-4">
             <div className="relative flex-1">
-              <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+              <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-saffron" />
               <input
                 data-testid="stories-search"
                 type="text"
                 placeholder="Search by name, achievement, or location"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-11 pr-4 py-3 bg-[#F5F5F5] border-0 rounded-full font-mont text-sm focus:outline-none focus:ring-2 focus:ring-saffron"
+                className="w-full pl-11 pr-4 py-3 bg-white border-2 border-saffron/30 rounded-full font-mont text-sm focus:outline-none focus:border-saffron focus:ring-2 focus:ring-saffron/20 shadow-sm"
               />
             </div>
-            <button data-testid="toggle-filters" onClick={() => setShowFilters(s => !s)} className="md:hidden flex items-center gap-2 px-4 py-3 bg-[#F5F5F5] rounded-full font-mont text-sm">
+            <button data-testid="toggle-filters" onClick={() => setShowFilters(s => !s)} className="md:hidden flex items-center gap-2 px-4 py-3 bg-saffron/10 border-2 border-saffron/30 rounded-full font-mont text-sm font-semibold text-saffron">
               <SlidersHorizontal size={16}/> Filters
             </button>
             <div className={`${showFilters ? "flex" : "hidden"} md:flex flex-col md:flex-row gap-3`}>
-              <select data-testid="filter-age" value={age} onChange={(e) => setAge(e.target.value)} className="px-4 py-3 bg-[#F5F5F5] rounded-full font-mont text-sm focus:outline-none focus:ring-2 focus:ring-saffron">
+              <select data-testid="filter-age" value={age} onChange={(e) => setAge(e.target.value)} className="px-4 py-3 bg-white border-2 border-saffron/30 rounded-full font-mont text-sm focus:outline-none focus:border-saffron focus:ring-2 focus:ring-saffron/20 shadow-sm">
                 {AGES.map(a => <option key={a.v} value={a.v}>{a.l}</option>)}
               </select>
-              <select data-testid="filter-field" value={field} onChange={(e) => setField(e.target.value)} className="px-4 py-3 bg-[#F5F5F5] rounded-full font-mont text-sm focus:outline-none focus:ring-2 focus:ring-saffron">
+              <select data-testid="filter-field" value={field} onChange={(e) => setField(e.target.value)} className="px-4 py-3 bg-white border-2 border-saffron/30 rounded-full font-mont text-sm focus:outline-none focus:border-saffron focus:ring-2 focus:ring-saffron/20 shadow-sm">
                 {FIELDS.map(f => <option key={f} value={f}>{f}</option>)}
               </select>
-              <select data-testid="filter-state" value={state} onChange={(e) => setState(e.target.value)} className="px-4 py-3 bg-[#F5F5F5] rounded-full font-mont text-sm focus:outline-none focus:ring-2 focus:ring-saffron">
+              <select data-testid="filter-state" value={state} onChange={(e) => setState(e.target.value)} className="px-4 py-3 bg-white border-2 border-saffron/30 rounded-full font-mont text-sm focus:outline-none focus:border-saffron focus:ring-2 focus:ring-saffron/20 shadow-sm">
                 {STATES.map(s => <option key={s} value={s}>{s}</option>)}
               </select>
-              <select data-testid="filter-sort" value={sort} onChange={(e) => setSort(e.target.value)} className="px-4 py-3 bg-[#F5F5F5] rounded-full font-mont text-sm focus:outline-none focus:ring-2 focus:ring-saffron">
+              <select data-testid="filter-sort" value={sort} onChange={(e) => setSort(e.target.value)} className="px-4 py-3 bg-white border-2 border-saffron/30 rounded-full font-mont text-sm focus:outline-none focus:border-saffron focus:ring-2 focus:ring-saffron/20 shadow-sm">
                 {SORTS.map(s => <option key={s.v} value={s.v}>{s.l}</option>)}
               </select>
             </div>
@@ -119,18 +124,18 @@ export default function Stories() {
           {activePills.length > 0 && (
             <div className="mt-4 flex items-center gap-2 flex-wrap">
               {activePills.map((p, i) => (
-                <button key={i} onClick={p.clear} className="inline-flex items-center gap-2 bg-saffron/10 text-saffron px-3 py-1.5 rounded-full font-mont text-xs">
+                <button key={i} onClick={p.clear} className="inline-flex items-center gap-2 bg-gradient-to-r from-saffron to-amber-500 text-white px-3 py-1.5 rounded-full font-mont text-xs font-semibold shadow-sm hover:shadow-md transition-shadow">
                   {p.label} <X size={12}/>
                 </button>
               ))}
-              <button data-testid="clear-filters" onClick={clearAll} className="text-xs text-gray-600 underline ml-2 font-mont">Clear all</button>
+              <button data-testid="clear-filters" onClick={clearAll} className="text-xs text-saffron font-semibold underline ml-2 font-mont hover:text-india-green">Clear all</button>
             </div>
           )}
         </div>
       </section>
 
       {/* Grid */}
-      <section className="max-w-7xl mx-auto px-5 lg:px-10 py-12">
+      <section className="relative max-w-7xl mx-auto px-5 lg:px-10 py-12">
         {loading ? (
           <div data-testid="stories-loading" className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[...Array(6)].map((_, i) => (

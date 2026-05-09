@@ -8,7 +8,7 @@ export default function StoryCard({ story, index = 0 }) {
     <Link
       to={`/stories/${story.slug}`}
       data-testid={`story-card-${story.slug}`}
-      className="group block hover-lift bg-white rounded-2xl overflow-hidden border border-black/5 shadow-sm fade-up"
+      className="group block hover-lift bg-white rounded-2xl overflow-hidden border-2 border-saffron/15 hover:border-saffron/40 shadow-lg hover:shadow-2xl fade-up relative"
       style={{ animationDelay: `${index * 70}ms` }}
     >
       <div className="relative aspect-video overflow-hidden bg-gray-100">
@@ -32,15 +32,16 @@ export default function StoryCard({ story, index = 0 }) {
           </div>
         </div>
       </div>
-      <div className="p-5">
+      <div className="p-5 bg-gradient-to-b from-white to-[#FFFAF0] relative">
+        <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-saffron via-yellow-400 to-india-green opacity-60"/>
         <h3 className="font-cinzel font-bold text-xl text-[#1a1a1a] mb-1 group-hover:text-saffron transition-colors">{story.name}</h3>
-        <p className="font-mont text-sm text-gray-500 mb-3">{story.age} · {story.field}</p>
+        <p className="font-mont text-sm text-saffron/80 font-semibold mb-3">{story.age} · {story.field}</p>
         <p className="font-mont text-[15px] text-gray-700 leading-relaxed line-clamp-2 mb-4">{story.hook || story.achievement}</p>
-        <div className="flex items-center justify-between">
-          <span className="flex items-center gap-1 text-xs text-gray-500 font-mont">
+        <div className="flex items-center justify-between pt-3 border-t border-saffron/10">
+          <span className="flex items-center gap-1 text-xs text-gray-600 font-mont font-semibold">
             <MapPin size={12} className="text-india-green"/> {story.city}, {story.state}
           </span>
-          <span className="text-saffron font-mont text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Watch →</span>
+          <span className="text-saffron font-mont text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">Watch →</span>
         </div>
       </div>
     </Link>
