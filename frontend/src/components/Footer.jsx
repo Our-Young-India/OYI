@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Instagram, Youtube, MessageCircle, Mail, Phone, Facebook } from "lucide-react";
 import api from "../lib/api";
+import { SOCIAL } from "../lib/social";
 import { toast } from "sonner";
 
 export default function Footer() {
@@ -35,8 +36,8 @@ export default function Footer() {
             <li><Link to="/stories" data-testid="footer-link-stories" className="hover:text-saffron transition-colors">Journeys</Link></li>
             <li><Link to="/nominate" data-testid="footer-link-nominate" className="hover:text-saffron transition-colors">Nominate</Link></li>
             <li><Link to="/about" data-testid="footer-link-about" className="hover:text-saffron transition-colors">About</Link></li>
-            <li><a href="#" className="hover:text-saffron transition-colors">Privacy Policy</a></li>
-            <li><a href="#" className="hover:text-saffron transition-colors">Terms of Use</a></li>
+            <li><Link to="/about" data-testid="footer-link-privacy" className="hover:text-saffron transition-colors">Privacy Policy</Link></li>
+            <li><Link to="/about" data-testid="footer-link-terms" className="hover:text-saffron transition-colors">Terms of Use</Link></li>
           </ul>
         </div>
 
@@ -44,10 +45,10 @@ export default function Footer() {
         <div>
           <h4 className="font-cinzel text-gold text-sm uppercase tracking-widest mb-5">Contact</h4>
           <ul className="space-y-3 font-mont text-white/80">
-            <li className="flex items-center gap-3"><Mail size={16} className="text-saffron"/> hi@sharanyamena.com</li>
-            <li className="flex items-center gap-3"><Phone size={16} className="text-saffron"/> +91-73866 66077</li>
+            <li className="flex items-center gap-3"><Mail size={16} className="text-saffron"/> <a href={SOCIAL.email} className="hover:text-saffron">hi@sharanyamena.com</a></li>
+            <li className="flex items-center gap-3"><Phone size={16} className="text-saffron"/> <a href={SOCIAL.phone} className="hover:text-saffron">+91-73866 66077</a></li>
             <li className="flex items-center gap-3"><MessageCircle size={16} className="text-saffron"/>
-              <a href="#" className="hover:text-saffron">WhatsApp</a>
+              <a href={SOCIAL.whatsapp} target="_blank" rel="noreferrer" className="hover:text-saffron">WhatsApp</a>
             </li>
           </ul>
         </div>
@@ -56,13 +57,13 @@ export default function Footer() {
         <div>
           <h4 className="font-cinzel text-gold text-sm uppercase tracking-widest mb-5">Follow Our Journey</h4>
           <div className="flex gap-4">
-            <a href="#" data-testid="social-instagram" aria-label="Instagram" className="w-11 h-11 rounded-full border border-white/15 flex items-center justify-center hover:bg-saffron hover:border-saffron transition-all">
+            <a href={SOCIAL.instagram} target="_blank" rel="noreferrer" data-testid="social-instagram" aria-label="Instagram" className="w-11 h-11 rounded-full border border-white/15 flex items-center justify-center hover:bg-saffron hover:border-saffron transition-all">
               <Instagram size={18} />
             </a>
-            <a href="#" data-testid="social-youtube" aria-label="YouTube" className="w-11 h-11 rounded-full border border-white/15 flex items-center justify-center hover:bg-saffron hover:border-saffron transition-all">
+            <a href={SOCIAL.youtube} target="_blank" rel="noreferrer" data-testid="social-youtube" aria-label="YouTube" className="w-11 h-11 rounded-full border border-white/15 flex items-center justify-center hover:bg-saffron hover:border-saffron transition-all">
               <Youtube size={18} />
             </a>
-            <a href="#" data-testid="social-facebook" aria-label="Facebook" className="w-11 h-11 rounded-full border border-white/15 flex items-center justify-center hover:bg-saffron hover:border-saffron transition-all">
+            <a href={SOCIAL.facebook} target="_blank" rel="noreferrer" data-testid="social-facebook" aria-label="Facebook" className="w-11 h-11 rounded-full border border-white/15 flex items-center justify-center hover:bg-saffron hover:border-saffron transition-all">
               <Facebook size={18} />
             </a>
           </div>

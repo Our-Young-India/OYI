@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../lib/api";
+import { SOCIAL } from "../lib/social";
 import StoryCard from "../components/StoryCard";
 import StatsSection from "../components/StatsSection";
 import { ChevronLeft, ChevronRight, Sparkles, Star, Mic, ArrowRight, Instagram, Youtube, Facebook } from "lucide-react";
@@ -241,17 +242,17 @@ export default function Home() {
           <p className="font-cormorant italic text-saffron text-lg mb-1">Stay Connected</p>
           <h2 className="font-cinzel text-3xl sm:text-5xl font-bold text-[#1a1a1a] mb-10">Follow Our Journey</h2>
           <div className="grid sm:grid-cols-3 gap-5">
-            <a href="#" data-testid="social-card-instagram" className="hover-lift bg-gradient-to-br from-pink-500 via-saffron to-yellow-400 text-white border border-white/40 rounded-2xl p-8 shadow-lg">
+            <a href={SOCIAL.instagram} target="_blank" rel="noreferrer" data-testid="social-card-instagram" className="hover-lift bg-gradient-to-br from-pink-500 via-saffron to-yellow-400 text-white border border-white/40 rounded-2xl p-8 shadow-lg">
               <Instagram className="text-white mx-auto mb-3" size={36}/>
               <h3 className="font-cinzel font-bold text-xl text-white">Instagram</h3>
               <p className="font-mont text-sm text-white/90 mt-1">Daily story snippets & reels</p>
             </a>
-            <a href="#" data-testid="social-card-youtube" className="hover-lift bg-gradient-to-br from-red-500 via-red-600 to-saffron text-white rounded-2xl p-8 shadow-lg">
+            <a href={SOCIAL.youtube} target="_blank" rel="noreferrer" data-testid="social-card-youtube" className="hover-lift bg-gradient-to-br from-red-500 via-red-600 to-saffron text-white rounded-2xl p-8 shadow-lg">
               <Youtube className="text-white mx-auto mb-3" size={36}/>
               <h3 className="font-cinzel font-bold text-xl text-white">YouTube</h3>
               <p className="font-mont text-sm text-white/90 mt-1">Full interviews & journey videos</p>
             </a>
-            <a href="#" data-testid="social-card-facebook" className="hover-lift bg-gradient-to-br from-[#1877F2] via-[#1064D8] to-[#0a4faf] text-white rounded-2xl p-8 shadow-lg">
+            <a href={SOCIAL.facebook} target="_blank" rel="noreferrer" data-testid="social-card-facebook" className="hover-lift bg-gradient-to-br from-[#1877F2] via-[#1064D8] to-[#0a4faf] text-white rounded-2xl p-8 shadow-lg">
               <Facebook className="text-white mx-auto mb-3" size={36}/>
               <h3 className="font-cinzel font-bold text-xl text-white">Facebook</h3>
               <p className="font-mont text-sm text-white/90 mt-1">Join the community & updates</p>

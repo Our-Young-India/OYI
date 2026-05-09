@@ -3,6 +3,7 @@ import "@/index.css";
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import { Toaster } from "sonner";
 import Layout from "./components/Layout";
+import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import Stories from "./pages/Stories";
 import StoryDetail from "./pages/StoryDetail";

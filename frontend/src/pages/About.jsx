@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../lib/api";
+import { SOCIAL } from "../lib/social";
 import StatsSection from "../components/StatsSection";
 import {
   Sparkles, Star, Instagram, Youtube, Mic, ArrowRight,
@@ -59,7 +60,7 @@ const RESOURCES = [
 const PILLARS = [
   { icon: Mic, title: "We Feature YOUR Story", body: "If you're doing something amazing, we want to share it. Free interview with Sharanya. Reach 50,000+ kids. Inspire others while building your portfolio.", cta: "Nominate Someone", to: "/nominate", external: false, color: "bg-gradient-to-br from-[#FF9933] to-amber-500" },
   { icon: Users, title: "We Connect You with Mentors", body: "Need advice? Stuck somewhere? We connect you with kids who've \"been there.\" Ask questions, find study partners, join field-specific groups.", cta: "Join Community", to: "mailto:hi@sharanyamena.com?subject=Join%20Community%20%E2%80%94%20Our%20Young%20India", external: true, color: "bg-gradient-to-br from-purple-500 to-fuchsia-600" },
-  { icon: Sparkles, title: "We Share Opportunities", body: "Free competitions. Scholarship programs. Online courses with discounts. Talent hunts. Government schemes for young achievers. Follow us to never miss out.", cta: "Follow on Instagram", to: "#", external: true, color: "bg-gradient-to-br from-pink-500 to-rose-600" },
+  { icon: Sparkles, title: "We Share Opportunities", body: "Free competitions. Scholarship programs. Online courses with discounts. Talent hunts. Government schemes for young achievers. Follow us to never miss out.", cta: "Follow on Instagram", to: SOCIAL.instagram, external: true, color: "bg-gradient-to-br from-pink-500 to-rose-600" },
   { icon: MessageCircle, title: "We Answer Your Questions", body: "Got a specific question? \"How do I start with zero budget?\" \"Which coding language first?\" Ask us — we'll find an achiever to answer or create content for you.", cta: "Ask a Question", to: "mailto:hi@sharanyamena.com?subject=Question%20for%20Our%20Young%20India", external: true, color: "bg-gradient-to-br from-cyan-500 to-blue-600" },
 ];
 
@@ -493,16 +494,16 @@ export default function About() {
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
-            <a href="#" data-testid="movement-yt" className="hover-lift bg-white text-[#1a1a1a] rounded-full px-6 py-3 font-mont font-semibold inline-flex items-center gap-2 shadow-lg">
+            <a href={SOCIAL.youtube} target="_blank" rel="noreferrer" data-testid="movement-yt" className="hover-lift bg-white text-[#1a1a1a] rounded-full px-6 py-3 font-mont font-semibold inline-flex items-center gap-2 shadow-lg">
               <Youtube className="text-red-600" size={20}/> Subscribe
             </a>
-            <a href="#" data-testid="movement-ig" className="hover-lift bg-white text-[#1a1a1a] rounded-full px-6 py-3 font-mont font-semibold inline-flex items-center gap-2 shadow-lg">
+            <a href={SOCIAL.instagram} target="_blank" rel="noreferrer" data-testid="movement-ig" className="hover-lift bg-white text-[#1a1a1a] rounded-full px-6 py-3 font-mont font-semibold inline-flex items-center gap-2 shadow-lg">
               <Instagram className="text-pink-600" size={20}/> Follow
             </a>
-            <a href="#" data-testid="movement-fb" className="hover-lift bg-white text-[#1a1a1a] rounded-full px-6 py-3 font-mont font-semibold inline-flex items-center gap-2 shadow-lg">
+            <a href={SOCIAL.facebook} target="_blank" rel="noreferrer" data-testid="movement-fb" className="hover-lift bg-white text-[#1a1a1a] rounded-full px-6 py-3 font-mont font-semibold inline-flex items-center gap-2 shadow-lg">
               <Facebook className="text-blue-600" size={20}/> Like
             </a>
-            <a href="#" data-testid="movement-wa" className="hover-lift bg-white text-[#1a1a1a] rounded-full px-6 py-3 font-mont font-semibold inline-flex items-center gap-2 shadow-lg">
+            <a href={SOCIAL.whatsapp} target="_blank" rel="noreferrer" data-testid="movement-wa" className="hover-lift bg-white text-[#1a1a1a] rounded-full px-6 py-3 font-mont font-semibold inline-flex items-center gap-2 shadow-lg">
               <MessageCircle className="text-green-600" size={20}/> Join Community
             </a>
           </div>
